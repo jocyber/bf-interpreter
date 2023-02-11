@@ -12,7 +12,7 @@ std::string readFromFile(const std::string&& fileName);
 int main(int agrc, char* argv[]) 
 {
     //using Tape = std::deque<char>;
-		using Tape = std::vector<char>;
+    using Tape = std::vector<char>;
 
     const std::string programInput = readFromFile("mandelbrot.bf");
 
@@ -37,7 +37,7 @@ int main(int agrc, char* argv[])
             case '<':
                 if (programCounter == 0) {
                     tape.insert(tape.begin(), 0);
-										//tape.push_front(0);
+		    //tape.push_front(0);
                     break;
                 }
 
@@ -72,9 +72,9 @@ int main(int agrc, char* argv[])
                 if (tape[programCounter] == 0) {
                     openingBraces.pop();
                 }
-								else {
-                  	i = openingBraces.top();
-								}
+		else {
+                    i = openingBraces.top();
+	        }
 
                 break;
 

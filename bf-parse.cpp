@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <stack>
+#include <vector>
 #include <deque>
 #include <sstream>
 
@@ -10,13 +11,14 @@ std::string readFromFile(const std::string&& fileName);
 
 int main(int agrc, char* argv[]) 
 {
-    using Tape = std::deque<char>;
+    //using Tape = std::deque<char>;
+		using Tape = std::vector<char>;
 
     const std::string programInput = readFromFile("mandelbrot.bf");
 
-    Tape tape(50, 0);
+    Tape tape(30000, 0);
 
-    int programCounter = 0;
+    int programCounter = 15000;
     std::stack<int> openingBraces;
 
     for (int i = 0; i < programInput.length(); i++) {     
@@ -34,7 +36,8 @@ int main(int agrc, char* argv[])
 
             case '<':
                 if (programCounter == 0) {
-                    tape.push_front(0);
+                    tape.insert(tape.begin(), 0);
+										//tape.push_front(0);
                     break;
                 }
 

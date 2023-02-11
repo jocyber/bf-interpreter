@@ -71,11 +71,10 @@ int main(int agrc, char* argv[])
 
                 if (tape[programCounter] == 0) {
                     openingBraces.pop();
-                    break;
                 }
-
-                i = openingBraces.top() - 1;
-                openingBraces.pop();
+								else {
+                  	i = openingBraces.top();
+								}
 
                 break;
 

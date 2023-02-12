@@ -3,18 +3,18 @@
 #include <string>
 #include <stack>
 #include <vector>
-#include <deque>
 #include <sstream>
+#include <string_view>
+#include <cstdlib>
 
-int findCorrespondingClosingBrace(const std::string& programInput, int position);
+int findCorrespondingClosingBrace(const std::string_view programInput, int position);
 std::string readFromFile(const std::string&& fileName);
 
 int main(int agrc, char* argv[]) 
 {
-    //using Tape = std::deque<char>;
     using Tape = std::vector<char>;
 
-    const std::string programInput = readFromFile("mandelbrot.bf");
+    const std::string&& programInput = readFromFile(argv[1]);
 
     Tape tape(30000, 0);
 
@@ -51,11 +51,6 @@ int main(int agrc, char* argv[])
                     const int current_position = i;
 
                     i = findCorrespondingClosingBrace(programInput, current_position);
-
-                    if (i == -1) {
-                        std::cerr << "No matching brace for [ at position " << current_position << '\n';
-                        exit(1);
-                    }
                 }
                 else {
                     openingBraces.push(i);
@@ -64,11 +59,6 @@ int main(int agrc, char* argv[])
                 break;
 
             case ']':
-                if (openingBraces.empty()) {
-                    std::cerr << "No opening brace for ] at position " << i << '\n';
-                    exit(1);
-                }
-
                 if (tape[programCounter] == 0) {
                     openingBraces.pop();
                 }
@@ -82,13 +72,13 @@ int main(int agrc, char* argv[])
         }
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
-int findCorrespondingClosingBrace(const std::string& programInput, int position) {
+int findCorrespondingClosingBrace(const std::string_view programInput, int openBracePosition) {
     std::stack<char> st;
 
-    for (int i = position + 1; i < programInput.length(); i++) {
+    for (int i = openBracePosition + 1; i < programInput.length(); i++) {
         switch (programInput[i]) {
             case '[': st.push('['); break;
 

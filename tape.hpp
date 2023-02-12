@@ -1,14 +1,14 @@
 class Tape {
-	struct Node {
-		explicit Node(const unsigned char data) : 
-			data_(data), 
-			back(nullptr),
-			next(nullptr) {}
+    struct Node {
+	explicit Node(const unsigned char data) : 
+		data_(data), 
+		back(nullptr),
+		next(nullptr) {}
 
-		unsigned char data_;
-		Node* back;
-		Node* next;
-	};
+	unsigned char data_;
+	Node* back;
+	Node* next;
+    };
 
 public:
 	explicit Tape() = default;

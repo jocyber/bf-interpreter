@@ -26,6 +26,13 @@ int main(int agrc, char* argv[])
             case '<': tape.moveLeft(); break;
             case '.': std::cout << tape.getHeadData(); break;
 
+            case ',': {
+                unsigned char input;
+                std::cin >> input;
+
+                tape.setHeadData(input);
+            }
+
             case '[':
                 if (tape.getHeadData() == 0) {
                     const int current_position = i;

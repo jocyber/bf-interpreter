@@ -22,6 +22,10 @@ Tape::~Tape() {
 	delete tapeHead;
 }
 
+void Tape::setHeadData(const unsigned char input) noexcept {
+	tapeHead->data_ = input;
+}
+
 void Tape::incrementHead() noexcept { tapeHead->data_++; }
 void Tape::decrementHead() noexcept { tapeHead->data_--; }
 

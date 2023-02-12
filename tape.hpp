@@ -20,6 +20,7 @@ public:
 	void moveLeft() noexcept;
 	void moveRight() noexcept;	
 
+	void setHeadData(const unsigned char input) noexcept;
 	constexpr unsigned char getHeadData() const noexcept { return tapeHead->data_; }
 
 private:
